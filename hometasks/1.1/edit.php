@@ -12,19 +12,23 @@
 	$files = file("data/$fname");
 
 	if(count($_POST) > 0){
-		$fname = $_POST['title'];
+		$title = $_POST['title'];
 		$content = htmlspecialchars($_POST['content']);
 		
-		if($fname == '' || $content == ''){
+		if($title == '' || $content == ''){
 			$msg = 'Заполните все поля';
 		}
-		elseif( ctype_digit($fname) ){
+		elseif( ctype_digit($title) ){
 			$msg = 'В полі повинні буди літери!';
 		}
 		else{
 			//сохранить статью в файл
-			fopen("data/$fname", 'w') or die('Cannot open file:  '.$title);
-			file_put_contents("data/$fname", $content);
+			fopen("data/$title", 'w') or die('Cannot open file:  '.$title);
+			file_put_contents("data/$title", $content);
+			if($title !== $fname){
+				unlink("data/$fname");
+			}
+			//
 			header("Location: index.php");
 			exit();
 		}
