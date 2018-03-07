@@ -1,23 +1,20 @@
 <?php
-
+	//error_reporting(-1);
+	
 	if(count($_POST) > 0){
+		
 		$title = trim($_POST['title']);
-		$content = trim($_POST['content']);
+		$content = htmlspecialchars($_POST['content']);
 		
 		if($title == '' || $content == ''){
 			$msg = 'Заполните все поля';
 		}
-		if( ctype_digit($title) ){
+		elseif( ctype_digit($title) ){
 			$msg = 'В полі повинні буди літери!';
 		}
-		if( file_exists("data/$title") ){
+		elseif( file_exists("data/$title") ){
 			$msg = "Файл $title вже існує.";
 		}
-		
-		/*
-			проверка корректности title
-			проверка уникальности title
-		*/
 		else{
 			//сохранить статью в файл
 			fopen("data/$title", 'w') or die('Cannot open file:  '.$title);
