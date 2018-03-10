@@ -1,7 +1,12 @@
+<a href="auth/login.php">Зайти</a>
 
 <?php
 	//error_reporting(-1);
-	
+	session_start();
+
+	if(isset($_SESSION['is_auth'])){
+        echo "Authorized!!!";
+    }
 	$list = scandir('data');
 	
 	foreach($list as $fname){
@@ -12,5 +17,6 @@
 	
 ?>
 <a href="add.php">Добавить</a>
+
 
 
