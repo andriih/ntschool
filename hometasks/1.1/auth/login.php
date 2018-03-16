@@ -5,7 +5,8 @@
             $_SESSION['is_auth'] = true;
 
             if(isset($_POST['remember'])){
-                setcookie('login','admin',time() + 3600 * 24 * 7, '/');
+                setcookie('login', hash('sha256','admin'), time() + 3600 * 24 * 7,'/');
+                setcookie('login', hash('sha256','qwerty'), time() + 3600 * 24 * 7,'/');
             }
 
             header('Location: ../index.php');
