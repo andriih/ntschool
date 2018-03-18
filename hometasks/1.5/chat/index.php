@@ -1,48 +1,20 @@
 <?php
-$db = new PDO('mysql:host=localhost;dbname=blog','root','');
-$db->exec('SET NAMES UTF8');
+        include_once ('functions.php');
 
-if(count($_POST) > 0){
-    $name = trim($_POST['name']);
-    $text = trim($_POST['text']);
+        $query = db_query("SELECT * FROM messages ORDER BY dt DESC");
 
-    if($name == '' || $text == ''){
-        $msg = 'Fiel all fields';
-    }else{
-        $sql = "INSERT INTO messages (name, text) VALUES (:n , :t)";
+        $messages = $query->fetchAll();
+       // var_dump($messages);
 
-        $query = $db->prepare($sql);
-
-        $query->execute([
-            'n' => $name,
-            't' => $text
-        ]);
-
-        $info = $query->errorInfo();
-
-        if($info[0] != PDO::ERR_NONE){
-            exit($info[2]);
-        }
-
-
-        header('Location: index.php');
-        exit;
-
-    }
-
-}else{
-    $name = '';
-    $text = '';
-    $msg = '';
-}
 ?>
 
-<?php foreach($messeges as $message) { ?>
+<?php foreach($messages as $message) { ?>
     <div>
         <em><?= $message['dt']; ?></em>
         <strong><?= $message['name']; ?></strong>
         <div><?= $message['text']; ?></div>
     </div>
+    <hr>
 <?php } ?>
 
 <a href="add.php">Add</a>
