@@ -6,6 +6,8 @@ if(count($_POST) > 0){
 
     $title = trim($_POST['title']);
     $content = htmlspecialchars($_POST['content']);
+    $article = db_query("SELECT name FROM articles WHERE name = '$title'")->fetchAll();
+    $name = $article[0];
 
     if($title == '' || $content == ''){
         $msg = 'Заполните все поля';
@@ -13,7 +15,7 @@ if(count($_POST) > 0){
     elseif( ctype_digit($title) ){
        $msg = 'В полі повинні буди літери!';
     }
-    elseif( file_exists("data/$title") ){
+    elseif( $name[0] === $title ){
         $msg = "Файл $title вже існує.";
     }
     else{
@@ -22,7 +24,6 @@ if(count($_POST) > 0){
                 't' => $title,
                 'c' => $content
         ]);
-
         header('Location: index.php');
         exit;
     }
@@ -33,7 +34,7 @@ else{
 
 ?>
     <h1>Add Page</h1>
-    
+
     <form method="post">
         Name<br>
         <input type="text" name="title" value="<?= $_POST['title']; ?>"><br>
