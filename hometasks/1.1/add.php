@@ -29,10 +29,10 @@
 	
 ?>
 <form method="post">
-	Название<br>
+	Name<br>
 	<input type="text" name="title" value="<?= $_POST['title']; ?>"><br>
-	Контент<br>
+	Content<br>
 	<textarea name="content"><?= $_POST['content']; ?></textarea><br>
-	<input type="submit" value="Добавить">
+	<input type="submit" value="Add article">
 </form>
 <?php echo $msg; ?>

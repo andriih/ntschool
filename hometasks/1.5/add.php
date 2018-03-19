@@ -1,3 +1,4 @@
+<a href="index.php">-> Return</a>
 <?php
 //error_reporting(-1);
 include_once 'functions.php';
@@ -10,7 +11,7 @@ if(count($_POST) > 0){
         $msg = 'Заполните все поля';
     }
     elseif( ctype_digit($title) ){
-        $msg = 'В полі повинні буди літери!';
+       $msg = 'В полі повинні буди літери!';
     }
     elseif( file_exists("data/$title") ){
         $msg = "Файл $title вже існує.";
@@ -31,11 +32,13 @@ else{
 }
 
 ?>
+    <h1>Add Page</h1>
+    
     <form method="post">
-        Название<br>
+        Name<br>
         <input type="text" name="title" value="<?= $_POST['title']; ?>"><br>
-        Контент<br>
+        Content<br>
         <textarea name="content"><?= $_POST['content']; ?></textarea><br>
-        <input type="submit" value="Добавить">
+        <input type="submit" value="Add article">
     </form>
 <?php echo $msg; ?>

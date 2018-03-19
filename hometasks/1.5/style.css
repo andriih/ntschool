@@ -1,0 +1,39 @@
+.msg{
+	width: 300px;
+	border: 2px solid blue;
+	border-radius: 10px;
+	margin: 10px;
+	padding: 10px;	
+}
+.warn{
+	width: 200px;
+	display: inline-block;
+	border: 3px solid black;
+	border-radius: 10px;
+	margin: 20px;
+	padding: 10px;
+	font-size: 20px;
+	text-decoration: none;
+	text-transform: uppercase;
+	background-color: yellow;
+	color: black;
+}
+.link{
+	font-size: 12px;
+	text-decoration: none;	
+	text-transform: uppercase;
+}
+#add{
+	font-size: 20px;
+	text-decoration: none;
+	color:red;
+	margin: 10px;
+	text-transform: uppercase;
+}
+.remove{
+	font-size: 12px;
+	text-decoration: none;	
+	text-transform: uppercase;
+	color: red;
+}
+

@@ -30,6 +30,7 @@ function db_check_error($query)
     $info = $query->errorInfo();
 
     if ($info[0] != PDO::ERR_NONE) {
+        return false;
         exit($info[2]);
     }
 }
