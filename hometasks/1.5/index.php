@@ -2,6 +2,12 @@
 	include_once 'functions.php';
 ?>
 <!DOCTYPE html>
+<?php 
+	session_start();
+	if($_SESSION['is_auth']){
+		echo "<p>You login as Admin (<a href=\"logout.php\" class=\"link\">Logout</a>)</p>";
+	}
+ ?>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -10,7 +16,6 @@
 </head>
 <body>
 <?php
-
    $query = db_query('SELECT * FROM articles ORDER BY dt DESC');
 
    $articles = $query->fetchAll();
@@ -28,7 +33,5 @@
 	</div>
 <?php } ?>
 <a href="add.php" id="add">Add new article</a>
-
-
 </body>
 </html>

@@ -1,5 +1,4 @@
-<a href="index.php">-> Return</a>
-<?php
+`<?php
 //error_reporting(-1);
 include_once 'functions.php';
 if(count($_POST) > 0){
