@@ -1,20 +1,22 @@
 <?php
-        include_once ('functions.php');
+        include_once 'models/messages.php';
+        $messages = messages_all();
 
-        $query = db_query("SELECT * FROM messages ORDER BY dt DESC");
+        switch ($_GET['view'] ?? null) {
+            case 'base':
+                $template = 'v_index';
+                break;
 
-        $messages = $query->fetchAll();
-       // var_dump($messages);
+            case 'inline':
+                $template = 'v_index_inline';
+                break;
+            
+            default:
+                $template = 'v_index';
+                break;
+        }
 
-?>
+        include "views/$template.php";
 
-<?php foreach($messages as $message) { ?>
-    <div>
-        <em><?= $message['dt']; ?></em>
-        <strong><?= $message['name']; ?></strong>
-        <div><?= $message['text']; ?></div>
-    </div>
-    <hr>
-<?php } ?>
 
-<a href="add.php">Add</a>
+
