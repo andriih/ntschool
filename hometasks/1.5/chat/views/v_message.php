@@ -1,9 +1,10 @@
-<form method="post">
-    Name:<br>
-    <input type="text" name="name" value="<?php echo $name; ?>"><br>
-    <textarea name="text" id="" cols="30" rows="10"></textarea><br>
-    <input type="submit" value="Send"><br>
-
-</form>
-
-<?= $msg; ?>
+<? if () { ?>
+    404
+<? }else{ ?>
+    <div>
+        <em><?= $message['dt']; ?></em>
+        <strong><?= $message['name']; ?></strong>
+        <a href="message.php?id=<?= $message['id_message'] ?>"><?= $message['text'] ?><a>
+        <div><?= $message['text']; ?></div>
+    </div>
+<? } ?>

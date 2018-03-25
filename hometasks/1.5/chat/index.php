@@ -10,12 +10,11 @@
             case 'inline':
                 $template = 'v_index_inline';
                 break;
-            
+
             default:
                 $template = 'v_index';
                 break;
         }
-
         include "views/$template.php";
 
 

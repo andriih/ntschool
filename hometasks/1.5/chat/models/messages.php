@@ -7,6 +7,12 @@
 	}
 	
 	function messages_one($id){
-
+        
+        $query = db_query("SELECT * FROM messages WHERE id_message=:id",
+        [
+           'id' => $id
+        ]);
+    
+            return $query->fetch();
 	}
 ?>
