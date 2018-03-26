@@ -1,5 +1,6 @@
 <?php 
 	include_once './models/db.php';
+	include 'c_article.php';
 	session_start();
 	$name = $_SESSION['login'];
 	

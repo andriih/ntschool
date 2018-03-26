@@ -1,5 +1,5 @@
 <?php 
-	require_once './models/db.php';
+	require_once '../models/db.php';
 
 	function fetch_all_articles()
 	{
@@ -7,7 +7,7 @@
    		return $query->fetchAll();
 	}
 
-	function fetch_one_articles($id)
+	function fetch_one_article($id)
 	{
 		$query = db_query('SELECT * FROM articles WHERE id=:id',[
 			'id' => $id
