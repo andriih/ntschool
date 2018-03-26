@@ -1,13 +1,17 @@
 <?php 
 	include_once 'functions.php';
+	
+	session_start();
+	$name = $_SESSION['login'];
+	
+	if($_SESSION['is_auth'] === true){
+		echo "<p>You login as $name (<a href=\"logout.php\" class=\"link\">Logout</a>)</p>";
+	}else{
+		echo "<p>Wellcome, stranger! (<a href=\"login.php\" class=\"link\">Login</a>)</p>";
+	}
 ?>
 <!DOCTYPE html>
-<?php 
-	session_start();
-	if($_SESSION['is_auth']){
-		echo "<p>You login as Admin (<a href=\"logout.php\" class=\"link\">Logout</a>)</p>";
-	}
- ?>
+
 <html lang="en">
 <head>
 	<meta charset="UTF-8">

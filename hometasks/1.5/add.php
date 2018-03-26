@@ -1,4 +1,4 @@
-`<?php
+<?php
 //error_reporting(-1);
 include_once 'functions.php';
 if(count($_POST) > 0){
@@ -12,7 +12,7 @@ if(count($_POST) > 0){
         $msg = 'Заполните все поля';
     }
     elseif( ctype_digit($title) ){
-       $msg = 'В полі повинні буди літери!';
+        $msg = 'В полі повинні буди літери!';
     }
     elseif( $name[0] === $title ){
         $msg = "Файл $title вже існує.";
