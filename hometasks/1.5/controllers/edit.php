@@ -1,11 +1,11 @@
 <?php
-include_once 'functions.php';
+include_once '../models/db.php';
 $article_id =  $_GET['article_id'];	
 $query = db_query("SELECT * FROM articles WHERE article_id = '$article_id' ");
 $article = $query->fetchAll();
 
 	if( $article[0] === null ){
-		header('Location:404.php');
+		header('Location: views/404.php');
 		exit;
 	}
 
@@ -28,24 +28,13 @@ $article = $query->fetchAll();
 			
 			db_query("DELETE FROM articles WHERE article_id = '$article_id'");
 
-	        header('Location:index.php');
+	        header('Location:../index.php');
 	        exit;
 		}
 	}
 	else{
 		$msg = '';
 	}
-
+	
+	include '../views/v_edit.php';
 ?>
-<?php foreach ($article as $article_item) { ?>
-	<h1>Edit Page</h1>
-	<p>(<a href="index.php" class="link">Blog</a>)</p>
-	<form method="post">
-		Name<br>
-		<input type="text" name="title" value="<?= $article_item['name']; ?>"><br>
-		Content<br>
-		<textarea name="content"><?= $article_item['text']; ?></textarea><br>
-		<input type="submit" value="Edit article">
-	</form>
-<?php } ?>
-<?php echo $msg; ?>

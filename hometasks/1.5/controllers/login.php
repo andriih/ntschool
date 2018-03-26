@@ -11,7 +11,7 @@
                 setcookie('login', hash('sha256','admin'), time() + 3600 * 24 * 7,'/');
             }
 
-            header('Location: index.php');
+            header('Location: ../index.php');
             exit;
         }elseif($_POST['login'] == '' || $_POST['password'] == ""){
             $msg = "Login or Password cant be blank...";
@@ -22,13 +22,6 @@
     }else{
         $msg = "";
     }
-?>
-<form method="post">
-        Login<br>
-        <input type="text" name="login" value="<?= $_POST['login']; ?>"><br>
-        Password<br>
-        <input type="password" name="password" value=""><br>
-       	<input type="checkbox" name="remember">Remember me<br>
-        <input type="submit" value="Login">
- </form>
-<?= $msg; ?>
+
+    include '../views/v_login.php';
+

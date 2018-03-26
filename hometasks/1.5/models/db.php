@@ -1,4 +1,5 @@
 <?php
+
 function some_rand()
 {
     static $res;

@@ -16,6 +16,7 @@
                 break;
         }
         include "views/$template.php";
-
+?>
+<a href="controllers/add.php" id="add">Add new article</a>
 
 

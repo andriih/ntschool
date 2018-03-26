@@ -1,7 +1,7 @@
 <?php
 //error_reporting(-1);
-include_once 'functions.php';
-if(count($_POST) > 0){
+include '../models/db.php';
+if(count($_POST) > 0){ 
 
     $title = trim($_POST['title']);
     $content = htmlspecialchars($_POST['content']);
@@ -23,7 +23,7 @@ if(count($_POST) > 0){
                 't' => $title,
                 'c' => $content
         ]);
-        header('Location: index.php');
+        header('Location: ../index.php');
         exit;
     }
 }
@@ -32,13 +32,6 @@ else{
 }
 
 ?>
-    <h1>Add Page</h1>
 
-    <form method="post">
-        Name<br>
-        <input type="text" name="title" value="<?= $_POST['title']; ?>"><br>
-        Content<br>
-        <textarea name="content"><?= $_POST['content']; ?></textarea><br>
-        <input type="submit" value="Add article">
-    </form>
-<?php echo $msg; ?>
+<?php include '../views/v_add.php'; ?>
+   
