@@ -1,6 +1,7 @@
 <?php
 
 include_once 'models/messages.php';
+include_once 'models/system.php';
 
 $id = $_GET['id'] ?? null;
 $err404 = false;
@@ -15,5 +16,8 @@ if($id === null || id==='')
     }
 }
 
-include "views/v_add.php";
-?>
+template('v_message',[
+    'err404' => $err404,
+    'message' => $message
+]);
+

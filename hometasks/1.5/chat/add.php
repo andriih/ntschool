@@ -1,6 +1,7 @@
 <?php
 
     include_once ('models/db.php');
+    include_once ('models/system.php');
 
     $db = db_connect();
 
@@ -9,7 +10,7 @@ if(count($_POST) > 0){
         $text = trim($_POST['text']);
 
         if($name == '' || $text == ''){
-            $msg = 'Fiel all fields';
+            $msg = 'Fill all fields';
         }else{
             db_query("INSERT INTO messages (name, text) VALUES (:n , :t)",[
                 'n' => $name,
@@ -20,12 +21,17 @@ if(count($_POST) > 0){
            exit;
 
         }
-
+ 
     }else{
         $name = '';
         $text = '';
         $msg = '';
     }
-?>
+    
+    template ('v_add',[
+       'name' => $name,
+        'text' => $text,
+        'msg' => $msg
+    ]);
 
 
