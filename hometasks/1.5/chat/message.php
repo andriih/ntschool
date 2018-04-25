@@ -9,14 +9,14 @@ $err404 = false;
 if($id === null || id==='')
 {
     $err404 = true;
-}else{
+}else{  
     $message = messages_one($id);
     if ($message === false){
         $err404 = true;
     }
 }
 
-template('v_message',[
+template('v_message', [
     'err404' => $err404,
     'message' => $message
 ]);
